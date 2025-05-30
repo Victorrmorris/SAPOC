@@ -104,7 +104,7 @@ for idx, row in patients.iterrows():
         col_a, col_b, col_c = st.columns(3)
         if col_a.button("Acknowledge", key=f"ack_{row.patient_id}"):
             st.session_state.alerts.loc[(st.session_state.alerts.patient_id == row.patient_id) & (st.session_state.alerts.status == "Active"), "status"] = "Acknowledged"
-        if col_b.button("Snooze 30m", key=f"snooze_{row.patient_id}"):
+        if col_b.button("Dismiss 30m", key=f"dismiss_{row.patient_id}"):
             st.session_state.alerts.loc[(st.session_state.alerts.patient_id == row.patient_id) & (st.session_state.alerts.status == "Active"), "timestamp"] += timedelta(minutes=30)
         if col_c.button("Escalate", key=f"escalate_{row.patient_id}"):
             # Placeholder for escalation logic
